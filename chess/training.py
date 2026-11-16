@@ -46,7 +46,7 @@ EVAL_GAMES = 5_000     # number of validation games used at each evaluation
 N_BLOCKS = args.n_blocks  #amount of blocks (Attention + FeedForward) that constitutes the transformer
 D = args.embedding_dim    #embedding dimension
 N_HEADS = args.n_heads    #number of attention heads 
-MAX_LEN = args.max_len    #max lenght of sequence 
+
 
 
 # Optimization 
