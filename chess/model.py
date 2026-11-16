@@ -93,7 +93,7 @@ class Transformer(nn.Module):
         for block in self.blocks:
             x = block(x, mask)
 
-        x = self.rms(x)
+        x = self.rmsn(x)
         return self.head(x)
 
 ## The transformer follows the GPT 2 architecture
