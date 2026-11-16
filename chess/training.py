@@ -20,9 +20,7 @@ p = argparse.ArgumentParser()
 
 p.add_argument("--n_blocks", type=int, default=4)  
 p.add_argument("--embedding_dim", type=int, default=128)
-p.add_argument("--n_heads", type=int, default=4)  
-p.add_argument("--max_len", type=int, default=256)
-
+p.add_argument("--n_heads", type=int, default=4)  #on a dk = d/n_heads. On fait en sorte d'avoir dk = 64
 p.add_argument("--batch_size", type=int, default=64)
 p.add_argument("--schedule", type=str, default="wsd", choices=["wsd", "cosine"])
 p.add_argument("--decay_start", type=int, default=4_000)
@@ -149,7 +147,7 @@ def main(schedule="wsd", decay_start=4_000, decay_steps=1_000):
     model = Transformer(vocab_size = VOCAB_SIZE, n_blocks = N_BLOCKS, d = D, n_heads = N_HEADS, max_len = MAX_LEN).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=MAX_LR, weight_decay=WEIGHT_DECAY)
     n_params = sum(p.numel() for p in model.parameters())
-    print(f"Run {run_name} | device {device} | {n_params:,} parameters | {end_step} steps")
+
 
     wandb.init(
         project=WANDB_PROJECT,
