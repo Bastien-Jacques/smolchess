@@ -144,7 +144,7 @@ def main(schedule="wsd", decay_start=4_000, decay_steps=1_000):
     val_tokens = load_tokens(DATASET_CONFIG, "validation")[:EVAL_GAMES]
 
     # Model and optimizer
-    model = Transformer(vocab_size = VOCAB_SIZE, n_blocks = N_BLOCKS, d = D, n_heads = N_HEADS, max_len = MAX_LEN).to(device)
+    model = Transformer(vocab_size = VOCAB_SIZE, n_blocks = N_BLOCKS, d = D, n_heads = N_HEADS).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=MAX_LR, weight_decay=WEIGHT_DECAY)
     n_params = sum(p.numel() for p in model.parameters())
 
